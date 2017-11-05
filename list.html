@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>interview</title>
+    <style>
+    /*@import url('https://fonts.googleapis.com/css?family=Passion+One');*/
+    * {
+        margin: 0;
+        padding: 0;
+    }
+  
+    html {
+        height: 100%;
+        font-size: 20px;
+    }
+
+    body{
+      font-family: 'Passion One', cursive;
+    }
+
+    .container{
+    width: 90vw;
+    padding: 6vw;
+    }
+
+    #articleList{
+      width: 65vw;
+      display: inline-block;
+    }
+
+    .sidebar{
+    position: fixed;
+    top: calc(6vw + 20px);
+    right: 6vw;
+    width: 20vw;
+    display: inline-block;
+    border: 1px solid #eee;
+    padding: 10px;
+    }
+
+    .h1{
+    font-size: 28px;
+    color: #b9b9b9;
+    }
+
+    li {
+        background: #fff;
+        box-shadow: #8e8e8e 0px 5px 27px -8px;
+        padding: 40px;
+        margin: 20px;
+        display:block;
+        border: 1px #efefef solid;
+        transition: box-shadow 0.5s;
+    }
+
+
+    a{
+      text-decoration: none;
+    }
+
+    a:hover li{
+      box-shadow: #000 0px 5px 27px -8px;
+    }
+
+    span:after{
+        padding: 10px;
+        margin-right:5px; 
+        color: #fff;
+    }
+    .css:after{
+        content: 'CSS';
+        background-color: #1d76db;
+    }
+
+
+    .js:after{
+        content: 'JS';
+        background-color: #d93f0b;
+    }
+    </style>
+</head>
+<body>
+<div class="container">
+
+
+<ul id="articleList"></ul>
+
+
+<sidebar class="sidebar">
+<p class="h1">分类</p>
+<p>css</p>
+<p>js</p>
+</sidebar>
+
+</div>
+
+
+<script src="lib/list.js"></script>
+</body>
+</html>

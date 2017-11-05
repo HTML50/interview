@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="lib/favicon.png"/>
+  <title>interview</title>
+  <style>
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  html,body {
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  #iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+  
+  .top {
+    position: fixed;
+    top: 20px;
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+  
+  .icon:hover {
+    opacity: 0.5;
+  }
+
+
+  .title {
+    left: 20px;
+    display: block;
+    font-size: 24px;
+    font-weight: 900;
+    background: #d81e06;
+    height: 1;
+    /* line-height: 32px; */
+    padding: 3px;
+  }
+
+ .title a{
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .menu {
+    right: 20px;
+  }
+    
+  .search {
+    right: 60px;
+  }
+  
+
+  </style>
+</head>
+
+<body>
+
+<h1 id="siteName" class="top title"><a href="#">QA</a></h1>
+  <search id="searchBtn" class="top search">
+  <svg t="1509542561172" class="icon" style="" viewBox="0 0 1026 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2670" xmlns:xlink="http://www.w3.org/1999/xlink" width="200.390625" height="200"><defs><style type="text/css"></style></defs><path d="M1019.2 979.2l-256-256c153.6-172.8 147.2-435.2-19.2-595.2-83.2-83.2-198.4-128-307.2-128S212.8 44.8 129.6 128c-172.8 172.8-172.8 448 0 614.4 83.2 83.2 198.4 128 307.2 128 102.4 0 204.8-38.4 288-108.8l256 256c6.4 6.4 12.8 6.4 19.2 6.4s12.8 0 19.2-6.4C1025.6 1004.8 1025.6 992 1019.2 979.2zM168 704C91.2 633.6 52.8 537.6 52.8 435.2s38.4-198.4 115.2-268.8c70.4-70.4 166.4-115.2 268.8-115.2S635.2 89.6 705.6 166.4c147.2 147.2 147.2 390.4 0 544-70.4 70.4-166.4 115.2-268.8 115.2S238.4 780.8 168 704z" p-id="2671" fill="#d81e06"></path></svg>
+  </search>
+  <menu id="menuBtn" class="top menu">
+  <svg t="1509542354486" class="icon" style="" viewBox="0 0 1170 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1856" xmlns:xlink="http://www.w3.org/1999/xlink" width="228.515625" height="200"><defs><style type="text/css"></style></defs><path d="M73.142857 877.714286h1024a73.142857 73.142857 0 0 1 0 146.285714h-1024a73.142857 73.142857 0 0 1 0-146.285714zM73.142857 438.857143h1024a73.142857 73.142857 0 0 1 0 146.285714h-1024a73.142857 73.142857 0 0 1 0-146.285714zM73.142857 0h1024a73.142857 73.142857 0 0 1 0 146.285714h-1024a73.142857 73.142857 0 0 1 0-146.285714z" p-id="1857" fill="#d81e06"></path></svg>
+  </menu>
+
+
+  <iframe id="iframe" src="list.html"></iframe>
+  <script>
+  if(location.search)
+  iframe.src = './article/'+location.search.slice(1);
+
+
+  iframe.onload = function() {
+    let title = iframe.contentWindow.document.title || 'untitle';
+    document.title = title;
+  }
+
+siteName.addEventListener('click', function() {
+    location.href = './index.html';
+  })
+
+
+
+  menuBtn.addEventListener('click', function() {
+    let w = parseInt(list.style.width);
+    if (w === 0 || isNaN(w)) {
+      list.style.width = '300px';
+      setTimeout(function() {
+        window.addEventListener('click', function() {
+          list.style.width = 0;
+          window.removeEventListener('click', arguments.callee)
+        })
+      }, 0)
+    } else {
+      list.style.width = 0;
+    }
+  })
+  </script>
+</body>
+
+</html>

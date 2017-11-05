@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+    html,
+    body {
+        height: 100%;
+        background: #ccc;
+    }
+    </style>
+</head>
+
+<body>
+    <script>
+    function preSetInterval(fn, time) {
+        var id = 0,
+            ids = [];
+
+        function repeat(fn, time, id) {
+            fn();
+            ids[id].push(setTimeout(function() {
+                repeat(fn, time, id)
+            }, time))
+        }
+
+        return {
+            set:function(fn,time){
+              id++;
+              ids[id] = [];
+              repeat(fn,time,id)
+              return id;
+            },
+            stop:function(id) {
+            ids[id].map((v) => clearTimeout(v));
+            }
+        }
+    }
+
+
+
+
+
+    function test() {
+        console.log('i\'m running');
+    }
+
+
+
+    function test1() {
+        console.log('another testing');
+    }
+    
+
+var instanceSetInterval = preSetInterval(),
+    mySetInterval = instanceSetInterval.set,
+    myClearInterval = instanceSetInterval.stop;
+
+
+console.log(mySetInterval(test,1000))
+console.log(mySetInterval(test1,500))
+
+
+    </script>
+</body>
+
+</html>

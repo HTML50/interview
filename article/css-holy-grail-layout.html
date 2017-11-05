@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<meta charset="UTF-8">
+<head>
+   
+    <title>Holy grail layout</title>
+    <style type="text/css">
+        .container{
+            width: 90%;
+            height:300px;
+            margin: auto;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .header{
+            height: 200px;
+            background: #777;
+        }
+
+        .body{
+            height: 100%;
+            background: #CCC;
+            font-size: 0;
+        }
+        .left,.middle,.right{
+            display: inline-block;
+            font-size: 24px;
+            text-align: center;
+        }
+        .left{
+            vertical-align: top;
+            min-height: 200px;
+            height: auto;
+            width: 200px;
+            background: #eee;
+
+        }
+
+        .middle{
+            width: calc(100% - 400px);
+            height: 100%;
+            background: #ccc;
+        }
+
+        .right{
+            height: 100%;
+            width: 200px;
+            background: #666;
+        }
+
+        .footer{
+            background: #888;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+
+CSS写出圣杯布局(holy grail layout). 有多少种写法
+<div class='container'>
+<div class="header">header</div>
+<div class="body">
+    <div class="left">left</div>
+    <div class="middle">mid</div>
+    <div class="right">right</div>
+</div>
+<div class="footer">footer</div>
+</div>
+
+</body>
+</html>

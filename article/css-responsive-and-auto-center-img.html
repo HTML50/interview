@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+
+<head>
+    <title>Holy grail layout</title>
+    <style>
+    body{
+    	text-align: center;
+    }
+    .box {
+        display: inline-block;
+        height: 200px;
+        width: 200px;
+        border: 1px solid #ccc;
+        position: relative;
+    }
+
+    img {
+        position: absolute;
+        margin: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-height: 100%;
+        max-width: 100%;
+    }
+    </style>
+</head>
+
+<body>
+<h1>写出以下图片的CSS，使得其等比例缩放，不超出容器宽高限制</h1>
+
+    <div class="box">
+        <img src="http://via.placeholder.com/150x350">
+    </div>
+    <div class="box">
+        <img src="http://via.placeholder.com/450x150">
+    </div>
+    <div class="box">
+        <img src="http://via.placeholder.com/150x150">
+    </div>
+    <div class="box">
+        <img src="http://via.placeholder.com/200x150">
+    </div>
+
+
+</body>
+
+</html>

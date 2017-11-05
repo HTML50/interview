@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+  var obj = {
+    name: 'joey',
+    age:10,
+    birth:new Date('5 5,1995'),
+    isSingle:true,
+    password:[0,2,5,6,1],
+    family:{
+      mom:'Mary',
+      dad:'Tom'
+    },
+    empty:null,
+    no:undefined,
+    job:new Job('IT',10000),
+    sayName:function(){
+      console.log(this.name);
+    }
+  }
+
+obj.self = obj;
+
+function Job(j,s){
+  this.salary = s;
+  this.name = j;
+  this.self = this;
+  this.obj = obj;
+}
+Job.prototype.goHome = function(){
+  console.log('I am going home now')
+}
+
+
+Object.prototype.chainFn = function(){
+  console.log('I am a function from prototype')
+}
+
+function clone(o){
+  var obj = {}
+
+  for(key in o){
+
+    if(typeof(key) === 'object' && (o[key]) !== null){
+      //数组 对象
+
+
+      //包含引用自身的值
+      if(key === o){
+        obj[key] = obj;
+      }
+
+      //数组
+     else if(Array.isArray(key)){
+        var arr=[];
+        for(i in key){
+          arr.push(key[i])
+          console.log(i);
+        }
+
+        obj[key] = arr;
+      }
+
+      //对象
+      else{
+
+        //自定义对象
+        if(key.constructor !== Object){
+          obj[key] = new key.constructor
+          for(i in key){
+            obj[key][i] = key[i];
+          }
+        }
+        else{
+          obj[key] = clone(key);
+        }
+      
+      }
+
+    }
+
+
+    //基本数据类型 直接赋值
+    else{
+      obj[key] = o[key]
+    }
+    
+  }
+
+return obj;
+}
+
+var clonedObj = clone(obj)
+  
+obj.name = 'sb'
+obj.age = 20;
+obj.password.pop()
+obj.isSingle = false;
+obj.family.mom = 'Lily'
+
+
+console.log(obj,clonedObj)
+
+
+</script>
+</body>
+</html>
