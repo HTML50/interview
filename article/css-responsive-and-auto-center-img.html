@@ -8,6 +8,7 @@
     body{
     	text-align: center;
     }
+
     .box {
         display: inline-block;
         height: 200px;
@@ -25,11 +26,12 @@
         max-height: 100%;
         max-width: 100%;
     }
+
     </style>
 </head>
 
 <body>
-<h1>写出以下图片的CSS，使得其等比例缩放，不超出容器宽高限制</h1>
+<h1>写出CSS实现以下图片的样式：使其等比例缩放，不超出容器宽高限制</h1>
 
     <div class="box">
         <img src="http://via.placeholder.com/150x350">
@@ -44,7 +46,10 @@
         <img src="http://via.placeholder.com/200x150">
     </div>
 
-
+    <script src="../lib/diy.js"></script>
+<script>
+    diy('img {.*}','\n/*请开始你的表演(๑•̀ㅂ•́)و✧*/\n\nimg {\n\n}')
+</script>
 </body>
 
 </html>

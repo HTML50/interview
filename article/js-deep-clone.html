@@ -1,9 +1,74 @@
 <!DOCTYPE html>
 <html>
+<meta charset="utf-8">
 <head>
-	<title></title>
+	<title>JS深拷贝(clone)函数的实现</title>
+     <style>
+    body h1{
+      text-align: center;
+    }
+
+    .container {
+      width: 80vw;
+      height: 100%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .left,.right{
+      width: 35vw;
+    }
+
+    .mid-line{
+    width: 4px;
+    height: 400px;
+    background: #d81e06;
+    align-self: center;
+    }
+
+</style>
+<link rel="stylesheet" href="../lib/github.css">
 </head>
 <body>
+<h1>JS深拷贝(clone)函数的实现</h1>
+<div class="container">
+<div class="left">
+<p>有如下对象(object)：</p>
+<p><pre><code data-language="javascript">
+  var obj = {
+    name: 'joey',
+    age:10,
+    birth:new Date('5 5,1995'),
+    isSingle:true,
+    password:[0,2,5,6,1],
+    family:{
+      mom:'Mary',
+      dad:'Tom'
+    },
+    empty:null,
+    no:undefined,
+    job:new Job('IT',10000),
+    sayName:function(){
+      console.log(this.name);
+    }
+  }
+</code>
+</pre></p>
+</div>
+<div class="mid-line"></div>
+<div class="right">
+  <p>如何实现?</p>
+  <pre><code data-language="javascript">
+  function clone(obj){
+    ...
+  }
+
+  var clonedObj = clone(obj)
+</code>
+</pre></p>
+</div>
+</div>
 <script type="text/javascript">
   var obj = {
     name: 'joey',
@@ -31,6 +96,7 @@ function Job(j,s){
   this.self = this;
   this.obj = obj;
 }
+
 Job.prototype.goHome = function(){
   console.log('I am going home now')
 }
@@ -107,5 +173,6 @@ console.log(obj,clonedObj)
 
 
 </script>
+<script src="../lib/rainbow-custom.min.js"></script>
 </body>
 </html>

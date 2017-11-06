@@ -2,12 +2,15 @@
 <html>
 <meta charset="UTF-8">
 <head>
-   
     <title>Holy grail layout</title>
-    <style type="text/css">
+    <style>
+
+    body h1{
+        text-align: center;
+    }
+    
         .container{
             width: 90%;
-            height:300px;
             margin: auto;
             font-size: 24px;
             text-align: center;
@@ -15,7 +18,7 @@
 
         .header{
             height: 200px;
-            background: #777;
+            background: #dadada;
         }
 
         .body{
@@ -46,27 +49,31 @@
         .right{
             height: 100%;
             width: 200px;
-            background: #666;
+            background: #eee;
         }
 
         .footer{
-            background: #888;
+            background: #f7f7f7;
             height: 200px;
         }
     </style>
 </head>
 <body>
-
-CSS写出圣杯布局(holy grail layout). 有多少种写法
+<h1>CSS写出圣杯布局(holy grail layout). 有多少种写法</h1>
 <div class='container'>
-<div class="header">header</div>
+<div class="header">header 高度固定200</div>
 <div class="body">
-    <div class="left">left</div>
-    <div class="middle">mid</div>
-    <div class="right">right</div>
+    <div class="left">left 宽度固定200，有最小高度</div>
+    <div class="middle">mid 宽度不固定，随网页大小变化</div>
+    <div class="right">right 宽度固定200</div>
 </div>
-<div class="footer">footer</div>
+<div class="footer">footer 高度固定200</div>
 </div>
 
+
+<script src="../lib/diy.js"></script>
+<script>
+    diy('\.container{.*}','\n/*请开始你的表演(๑•̀ㅂ•́)و✧*/\n\n.container {\n\n}')
+</script>
 </body>
 </html>
