@@ -85,7 +85,7 @@
 
 
   siteName.addEventListener('click', function() {
-      iframe.src = './interview/list.html';
+      iframe.src = '/interview/list.html';
     })
 
   iframe.addEventListener('load', function() {
@@ -95,7 +95,7 @@
       if(iframe.src.indexOf('/list.html')===-1){
         history.pushState(null,null,iframe.src.replace(/(.*\/)*([^.]+).*/ig,"?$2"));
       }else{
-        history.pushState(null,null,location.origin);
+        history.pushState(null,null,location.origin+'/interview/');
       }
       
     })

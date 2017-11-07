@@ -5,8 +5,8 @@
 <head>
     <title>Holy grail layout</title>
     <style>
-    body{
-    	text-align: center;
+    body {
+        text-align: center;
     }
 
     .box {
@@ -26,13 +26,11 @@
         max-height: 100%;
         max-width: 100%;
     }
-
     </style>
 </head>
 
 <body>
-<h1>写出CSS实现以下图片的样式：使其等比例缩放，不超出容器宽高限制</h1>
-
+    <h1>写出CSS实现以下图片的样式：使其等比例缩放，不超出容器宽高限制</h1>
     <div class="box">
         <img src="http://via.placeholder.com/150x350">
     </div>
@@ -45,11 +43,10 @@
     <div class="box">
         <img src="http://via.placeholder.com/200x150">
     </div>
-
     <script src="../lib/diy.js"></script>
-<script>
-    diy('img {.*}','\n/*请开始你的表演(๑•̀ㅂ•́)و✧*/\n\nimg {\n\n}')
-</script>
+    <script>
+    diy('img\\s{[\\s\\S]*}\\s', '\n/*请开始你的表演(๑•̀ㅂ•́)و✧*/\n\nimg {\n\n}\n')
+    </script>
 </body>
 
 </html>

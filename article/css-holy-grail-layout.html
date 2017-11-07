@@ -1,79 +1,82 @@
 <!doctype html>
 <html>
 <meta charset="UTF-8">
-<head>
-    <title>Holy grail layout</title>
-    <style>
 
-    body h1{
+<head>
+    <title>圣杯布局 Holy grail layout</title>
+    <style>
+    body h1 {
         text-align: center;
     }
-    
-        .container{
-            width: 90%;
-            margin: auto;
-            font-size: 24px;
-            text-align: center;
-        }
 
-        .header{
-            height: 200px;
-            background: #dadada;
-        }
+    .container {
+        width: 90%;
+        margin: auto;
+        font-size: 24px;
+        text-align: center;
+    }
 
-        .body{
-            height: 100%;
-            background: #CCC;
-            font-size: 0;
-        }
-        .left,.middle,.right{
-            display: inline-block;
-            font-size: 24px;
-            text-align: center;
-        }
-        .left{
-            vertical-align: top;
-            min-height: 200px;
-            height: auto;
-            width: 200px;
-            background: #eee;
+    .header {
+        height: 200px;
+        background: #dadada;
+    }
 
-        }
+    .body {
+        height: 100%;
+        background: #CCC;
+        font-size: 0;
+    }
 
-        .middle{
-            width: calc(100% - 400px);
-            height: 100%;
-            background: #ccc;
-        }
+    .left,
+    .middle,
+    .right {
+        display: inline-block;
+        font-size: 24px;
+        text-align: center;
+    }
 
-        .right{
-            height: 100%;
-            width: 200px;
-            background: #eee;
-        }
+    .left {
+        vertical-align: top;
+        min-height: 200px;
+        height: auto;
+        width: 200px;
+        background: #eee;
+    }
 
-        .footer{
-            background: #f7f7f7;
-            height: 200px;
-        }
+    .middle {
+        width: calc(100% - 400px);
+        height: 100%;
+        background: #ccc;
+    }
+
+    .right {
+        height: 100%;
+        width: 200px;
+        background: #eee;
+    }
+
+    .footer {
+        background: #f7f7f7;
+        height: 200px;
+    }
     </style>
 </head>
+
 <body>
-<h1>CSS写出圣杯布局(holy grail layout). 有多少种写法</h1>
-<div class='container'>
-<div class="header">header 高度固定200</div>
-<div class="body">
-    <div class="left">left 宽度固定200，有最小高度</div>
-    <div class="middle">mid 宽度不固定，随网页大小变化</div>
-    <div class="right">right 宽度固定200</div>
-</div>
-<div class="footer">footer 高度固定200</div>
-</div>
-
-
-<script src="../lib/diy.js"></script>
-<script>
-    diy('\.container{.*}','\n/*请开始你的表演(๑•̀ㅂ•́)و✧*/\n\n.container {\n\n}')
-</script>
+    <h1>CSS写出圣杯布局(holy grail layout)；有多少种写法？</h1>
+    <div class='container'>
+        <div class="header">header 高度固定200</div>
+        <div class="body">
+            <div class="left">left 宽度固定200，有最小高度</div>
+            <div class="middle">mid 宽度不固定，随网页大小变化</div>
+            <div class="right">right 宽度固定200</div>
+        </div>
+        <div class="footer">footer 高度固定200</div>
+    </div>
+    <script src="../lib/diy.js"></script>
+    <script>
+    diy('\\.container\\s{([\\s\\S]*)}\\s', '\n/*请开始你的表演(๑•̀ㅂ•́)و✧*/\n\n.container {\n\n}\n')
+    </script>
 </body>
+
 </html>
