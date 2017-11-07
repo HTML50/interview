@@ -3,16 +3,16 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="shortcut icon" href="lib/favicon.png"/>
+  <link rel="shortcut icon" href="./interview/lib/favicon.png"/>
   <title>interview</title>
   <style>
-
   * {
     margin: 0;
     padding: 0;
   }
   
   html,body {
+    font-family: monospace;
     height: 100%;
     overflow: hidden;
   }
@@ -79,14 +79,14 @@
   </menu>
 
 
-  <iframe id="iframe" src="list.html"></iframe>
+  <iframe id="iframe" src="./list.html"></iframe>
   <script>
   if(location.search && location.search !== '?list')
   iframe.src = './article/'+location.search.slice(1)+'.html';
 
 
   siteName.addEventListener('click', function() {
-      iframe.src = './list.html';
+      iframe.src = './interview/list.html';
     })
 
   iframe.addEventListener('load', function() {
