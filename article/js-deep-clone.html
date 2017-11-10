@@ -68,7 +68,9 @@
 </code>
 </pre></p>
 </div>
+
 </div>
+<div>打开F12,选中Console</div>
 <script type="text/javascript">
   var obj = {
     name: 'joey',
@@ -87,20 +89,17 @@
       console.log(this.name);
     }
   }
-
 obj.self = obj;
 
 function Job(j,s){
   this.salary = s;
   this.name = j;
   this.self = this;
-  this.obj = obj;
 }
 
 Job.prototype.goHome = function(){
   console.log('I am going home now')
 }
-
 
 Object.prototype.chainFn = function(){
   console.log('I am a function from prototype')
@@ -109,40 +108,38 @@ Object.prototype.chainFn = function(){
 function clone(o){
   var obj = {}
 
-  for(key in o){
 
-    if(typeof(key) === 'object' && (o[key]) !== null){
+
+  //这样也会复制prototype上的值
+  for(key in o){
+    if(typeof(o[key]) === 'object' && (o[key]) !== null){
       //数组 对象
 
 
       //包含引用自身的值
-      if(key === o){
-        obj[key] = obj;
+      if(o[key] === o){
+        obj[key] = o;
       }
 
       //数组
-     else if(Array.isArray(key)){
-        var arr=[];
-        for(i in key){
-          arr.push(key[i])
-          console.log(i);
-        }
-
-        obj[key] = arr;
+     else if(Array.isArray(o[key])){
+        obj[key] = o[key].concat();
       }
 
       //对象
       else{
 
         //自定义对象
-        if(key.constructor !== Object){
-          obj[key] = new key.constructor
-          for(i in key){
-            obj[key][i] = key[i];
+        if(o[key].constructor !== Object){
+
+          obj[key] = new o[key].constructor
+          for(i in o[key]){
+            obj[key][i] = o[key][i];
           }
         }
         else{
-          obj[key] = clone(key);
+         console.log('to be cloned obj'+ key)
+          obj[key] = clone(o[key]);
         }
       
       }
