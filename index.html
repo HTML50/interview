@@ -23,6 +23,7 @@
     display: block;
   }
   
+
   .top {
     position: fixed;
     top: 20px;
@@ -62,8 +63,10 @@
   .search {
     right: 60px;
   }
+  #searchInput{
+    font-size: 20px;
+  }
   
-
   </style>
 </head>
 
@@ -72,6 +75,7 @@
 <h1 id="siteName" class="top title">Interview QA</h1>
   <search id="searchBtn" class="top search">
   <svg t="1509542561172" class="icon" style="" viewBox="0 0 1026 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2670" xmlns:xlink="http://www.w3.org/1999/xlink" width="200.390625" height="200"><defs><style type="text/css"></style></defs><path d="M1019.2 979.2l-256-256c153.6-172.8 147.2-435.2-19.2-595.2-83.2-83.2-198.4-128-307.2-128S212.8 44.8 129.6 128c-172.8 172.8-172.8 448 0 614.4 83.2 83.2 198.4 128 307.2 128 102.4 0 204.8-38.4 288-108.8l256 256c6.4 6.4 12.8 6.4 19.2 6.4s12.8 0 19.2-6.4C1025.6 1004.8 1025.6 992 1019.2 979.2zM168 704C91.2 633.6 52.8 537.6 52.8 435.2s38.4-198.4 115.2-268.8c70.4-70.4 166.4-115.2 268.8-115.2S635.2 89.6 705.6 166.4c147.2 147.2 147.2 390.4 0 544-70.4 70.4-166.4 115.2-268.8 115.2S238.4 780.8 168 704z" p-id="2671" fill="#d81e06"></path></svg>
+  <input id="searchInput" type="text">
   </search>
   <menu id="menuBtn" class="top menu">
   <svg t="1509542354486" class="icon" style="" viewBox="0 0 1170 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1856" xmlns:xlink="http://www.w3.org/1999/xlink" width="228.515625" height="200"><defs><style type="text/css"></style></defs><path d="M73.142857 877.714286h1024a73.142857 73.142857 0 0 1 0 146.285714h-1024a73.142857 73.142857 0 0 1 0-146.285714zM73.142857 438.857143h1024a73.142857 73.142857 0 0 1 0 146.285714h-1024a73.142857 73.142857 0 0 1 0-146.285714zM73.142857 0h1024a73.142857 73.142857 0 0 1 0 146.285714h-1024a73.142857 73.142857 0 0 1 0-146.285714z" p-id="1857" fill="#d81e06"></path></svg>
@@ -88,6 +92,18 @@
       iframe.src = '/interview/list.html';
     })
 
+
+  menuBtn.addEventListener('click', function() {
+    
+  })
+
+
+
+  searchBtn.addEventListener('click', function() {
+    
+  })
+
+
   iframe.addEventListener('load', function() {
       let title = iframe.contentWindow.document.title || 'untitle';
       document.title = title;
@@ -100,9 +116,6 @@
       
     })
 
-  menuBtn.addEventListener('click', function() {
-    
-  })
   </script>
 </body>
 

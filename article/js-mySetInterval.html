@@ -1,20 +1,71 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
+<meta charset="utf-8">
 <head>
-    <meta charset="UTF-8">
-    <style>
-    html,
-    body {
-        height: 100%;
-        background: #ccc;
+    <title>用setTimeout实现一个setInterval函数</title>
+     <style>
+     body{
+        font-size: 20px;
+     }
+    body h1{
+      text-align: center;
     }
-    </style>
+
+    .tip{
+    border: 1px solid rgb(220, 220, 220);
+    color: rgb(93, 93, 93);
+    padding: 20px;
+    border-radius: 10px;
+    }
+
+    .container {
+      width: 50vw;
+      height: 100%;
+      margin: auto;
+    }
+
+    .describe{
+    background: #f8f8f8;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.describe li{
+    margin: 10px;
+}
+
+
+
+</style>
 </head>
 
 <body>
-    <script>
-    function preSetInterval(fn, time) {
+<h1>用setTimeout实现一个setInterval函数</h1>
+<div class="container">
+<div>
+<p>要求：</p>
+<ol class="describe">
+  <li>使用setTimeout</li>
+  <li>完整模拟setInterval的功能，包括开始与停止</li>
+  <li>可以运行多个setInterval</li>
+  <li>封装函数</li>
+</ol>
+</div>
+
+
+<p>提示：</p>
+<div class="tip">
+可以分布逐渐实现功能。我刚开始就实现了一个运行，然后想办法加上了停止，多个同时运行等。<br />
+写好了你还可以自己问自己个问题：这样写有什么隐患。我是没答上来。
+</div>
+
+</div>
+
+<script type="text/javascript">
+ 
+ function preSetInterval(fn, time) {
         var id = 0,
             ids = [];
 
@@ -38,10 +89,6 @@
         }
     }
 
-
-
-
-
     function test() {
         console.log('i\'m running');
     }
@@ -57,12 +104,11 @@ var instanceSetInterval = preSetInterval(),
     mySetInterval = instanceSetInterval.set,
     myClearInterval = instanceSetInterval.stop;
 
-
-console.log(mySetInterval(test,1000))
-console.log(mySetInterval(test1,500))
-
-
-    </script>
+</script>
+<script src="../lib/diy.js"></script>
+<script>
+diy(0,0,1)
+</script>
 </body>
-
 </html>
+

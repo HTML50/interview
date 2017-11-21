@@ -4,8 +4,21 @@
 <head>
 	<title>JS深拷贝(clone)函数的实现</title>
      <style>
+      body{
+        font-size: 20px;
+     }
     body h1{
       text-align: center;
+    }
+
+    .sep{
+    border: 1px solid rgb(220, 220, 220);
+    text-align: center;
+    color: rgb(93, 93, 93);
+    padding: 10px;
+    width: 80vw;
+    margin: 40px auto;
+    border-radius: 10px;
     }
 
     .container {
@@ -70,7 +83,7 @@
 </div>
 
 </div>
-<div>打开F12,选中Console</div>
+<div class="sep">打开F12，在Console中选择iframe进行调试；或者在下面手写；或自行复制代码本地调试。</div>
 <script type="text/javascript">
   var obj = {
     name: 'joey',
@@ -171,5 +184,9 @@ console.log(obj,clonedObj)
 
 </script>
 <script src="../lib/rainbow-custom.min.js"></script>
+<script src="../lib/diy.js"></script>
+<script>
+diy(0,0,1)
+</script>
 </body>
 </html>

@@ -5,94 +5,111 @@
     <meta charset="UTF-8">
     <title>interview</title>
     <style>
-    
     * {
         margin: 0;
         padding: 0;
     }
-  
+
     html {
         height: 100%;
         font-size: 20px;
     }
 
-    .container{
-    width: 88vw;
-    padding: 6vw;
+    .container {
+        width: 86vw;
+        padding: 6vw;
     }
 
-    #articleList{
-      width: 65vw;
-      display: inline-block;
+    #articleList {
+        width: 65vw;
+        display: inline-block;
+    }
+    
+    .right{
+        position: fixed;
+        right: 6vw;
+        width: 20vw;
+        border: 1px solid #eee;
+        padding: 10px;
     }
 
-    .sidebar{
-    position: fixed;
-    top: calc(6vw + 20px);
-    right: 6vw;
-    width: 20vw;
-    display: inline-block;
-    border: 1px solid #eee;
-    padding: 10px;
+    .sidebar {
+        top: calc(6vw + 20px);
     }
 
-    .h1{
-    font-size: 28px;
-    color: #b9b9b9;
+    .sidebar p{
+        padding: 5px;
     }
 
-    a {
-        background: #fff;
+    .qrcode{
+        top: calc(6vw + 250px);
+    }
+
+    .qrcode img{
+        width: 20vw;
+    }
+
+    .h1 {
+        font-size: 28px;
+        color: #b9b9b9;
+    }
+
+    #articleList a {
+        background: #f5f5f5;
         box-shadow: #8e8e8e 0px 5px 27px -8px;
         padding: 40px;
         margin: 20px;
-        display:block;
+        display: block;
         border: 1px #efefef solid;
         transition: box-shadow 0.5s;
         text-decoration: none;
+        color: #292929;
     }
 
-    a{
-          display: block;
+    #articleList a:hover {
+        box-shadow: #000 0px 5px 27px -8px;
     }
 
-    a:hover{
-      box-shadow: #000 0px 5px 27px -8px;
-    }
-
-    span:after{
+    span:after {
         padding: 10px;
-        margin-right:5px; 
+        margin-right: 5px;
         color: #fff;
     }
-    .css:after{
+
+    .css:after {
         content: 'CSS';
         background-color: #1d76db;
     }
 
 
-    .js:after{
+    .js:after {
         content: 'JS';
         background-color: #d93f0b;
     }
+
+
     </style>
 </head>
+
 <body>
-<div class="container">
+    <div class="container">
+        <div id="articleList"></div>
+        <sidebar class="sidebar right">
+            <p class="h1">分类</p>
+            <p><a href="javascript:void(0)" onclick="showAll()">全部 (<span id="numberOfAll"></span>)</a></p>
+            <p><a href="javascript:void(0)" onclick="showList('css')">CSS (<span id="numberOfCSS"></span>)</a></p>
+            <p><a href="javascript:void(0)" onclick="showList('js')">JS (<span id="numberOfJS"></span>)</a></p>
+        </sidebar>
+        
+        <sidebar class="qrcode right">
+            <p class="h1">我的公众号</p>
+            <p><img src="lib/qr.jpg"></p>
+        </sidebar>
 
 
-<div id="articleList"></div>
 
-
-<sidebar class="sidebar">
-<p class="h1">分类</p>
-<p>css</p>
-<p>js</p>
-</sidebar>
-
-</div>
-
-
-<script src="lib/list.js"></script>
+    </div>
+    <script src="lib/list.js"></script>
 </body>
+
 </html>
