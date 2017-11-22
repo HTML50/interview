@@ -1,122 +1,305 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <link rel="shortcut icon" href="./interview/lib/favicon.png"/>
-  <title>interview</title>
-  <style>
-  * {
-    margin: 0;
-    padding: 0;
-  }
-  
-  html,body {
-    height: 100%;
-    overflow: hidden;
-  }
-  
-  #iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
-  }
-  
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="./interview/lib/favicon.png" />
+    <title>interview</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
 
-  .top {
-    position: fixed;
-    top: 20px;
-  }
+    html,
+    body {
+        height: 100%;
+        overflow: hidden;
+        font-family: 'DejaVu Serif';
+    }
 
-  .icon {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    transition: opacity 0.3s;
-  }
-  
-  .icon:hover {
-    opacity: 0.5;
-  }
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    #iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+        transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
 
 
-  .title {
-    left: 20px;
-    display: block;
-    font-size: 24px;
-    font-weight: 900;
-    background: #d81e06;
-    padding: 6px;
-    color: #fff;
-  }
+    .top {
+        position: fixed;
+        top: 20px;
+    }
 
- .title:hover{
-    text-decoration: underline;
-    cursor: pointer;
-  }
-  
-  .menu {
-    right: 20px;
-  }
-    
-  .search {
-    right: 60px;
-  }
-  #searchInput{
-    font-size: 20px;
-  }
-  
-  </style>
+    .icon {
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        transition: opacity 0.3s;
+    }
+
+    .icon:hover {
+        opacity: 0.5;
+    }
+
+
+    .title {
+        left: 20px;
+        display: block;
+        font-size: 24px;
+        font-weight: 900;
+        background: #d81e06;
+        padding: 6px;
+        color: #fff;
+    }
+
+    .title:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .menu {
+        right: 20px;
+    }
+
+    .search {
+        right: 60px;
+    }
+
+    #searchInput {
+        width: 0;
+        height: 30px;
+        font-size: 20px;
+        outline: none;
+        transition: width 0.3s;
+        border-radius: 8px;
+        vertical-align: top;
+        text-indent: 10px;
+        border: none;
+    }
+
+    .menuOpen {
+        transform: translateX(-300px);
+        opacity: 1 !important;
+    }
+
+    .iframe-move-for-nav {
+        pointer-events: none;
+        transform: translateX(-300px);
+    }
+
+    #nav {
+        position: fixed;
+        height: 100%;
+        right: -320px;
+        display: block;
+        font-size: 24px;
+        font-weight: 900;
+        background: #d81e06;
+        padding: 6px;
+        color: #fff;
+        transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+        width: 240px;
+        padding: 40px;
+        z-index: 2;
+        opacity: 0;
+    }
+
+    #nav div {
+        transition: background 0.5s;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+
+    #nav div:hover {
+        background: #b30000;
+    }
+
+    #header {
+        transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    #about {
+        position: fixed;
+        right: -500px;
+        width: 400px;
+        z-index: 1;
+        transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1), width 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+        padding: 50px;
+        background: #0082c8;
+        color: #fff;
+        height: 100%;
+    }
+
+    #about:hover {
+        width: 450px;
+    }
+
+    #about div {
+        width: 400px;
+    }
+
+    #about a {
+        text-decoration: underline;
+    }
+
+    #about p {
+        margin-top: 20px;
+    }
+
+    .iframe-move-for-about {
+        transform: translateX(-800px) !important;
+        filter: blur(3px) opacity(0.3);
+    }
+
+    .aboutOpen {
+        transform: translateX(-800px);
+    }
+    </style>
 </head>
 
 <body>
+    <div id="header">
+        <h1 id="siteName" class="top title">Interview QA</h1>
+        <search class="top search">
+            <svg id="searchBtn" t="1509542561172" class="icon" style="" viewBox="0 0 1026 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2670" xmlns:xlink="http://www.w3.org/1999/xlink" width="200.390625" height="200">
+                <defs>
+                    <style type="text/css"></style>
+                </defs>
+                <path d="M1019.2 979.2l-256-256c153.6-172.8 147.2-435.2-19.2-595.2-83.2-83.2-198.4-128-307.2-128S212.8 44.8 129.6 128c-172.8 172.8-172.8 448 0 614.4 83.2 83.2 198.4 128 307.2 128 102.4 0 204.8-38.4 288-108.8l256 256c6.4 6.4 12.8 6.4 19.2 6.4s12.8 0 19.2-6.4C1025.6 1004.8 1025.6 992 1019.2 979.2zM168 704C91.2 633.6 52.8 537.6 52.8 435.2s38.4-198.4 115.2-268.8c70.4-70.4 166.4-115.2 268.8-115.2S635.2 89.6 705.6 166.4c147.2 147.2 147.2 390.4 0 544-70.4 70.4-166.4 115.2-268.8 115.2S238.4 780.8 168 704z" p-id="2671" fill="#d81e06"></path>
+            </svg>
+            <input id="searchInput" type="text" placeholder="搜索功能未实现">
+        </search>
+        <menu id="menuBtn" class="top menu">
+            <svg t="1509542354486" class="icon" style="" viewBox="0 0 1170 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1856" xmlns:xlink="http://www.w3.org/1999/xlink" width="228.515625" height="200">
+                <defs>
+                    <style type="text/css"></style>
+                </defs>
+                <path d="M73.142857 877.714286h1024a73.142857 73.142857 0 0 1 0 146.285714h-1024a73.142857 73.142857 0 0 1 0-146.285714zM73.142857 438.857143h1024a73.142857 73.142857 0 0 1 0 146.285714h-1024a73.142857 73.142857 0 0 1 0-146.285714zM73.142857 0h1024a73.142857 73.142857 0 0 1 0 146.285714h-1024a73.142857 73.142857 0 0 1 0-146.285714z" p-id="1857" fill="#d81e06"></path>
+            </svg>
+        </menu>
+    </div>
+    <nav id="nav" class="nav">
+        <a href="index.html">
+            <div>首页</div>
+        </a>
+        <a href="https://github.com/HTML50/interview/issues/1">
+            <div>留言</div>
+        </a>
+        <a href="https://github.com/HTML50/interview/issues/new?title=题目标题XXX&body=题目描述blah,blah&labels=提交题目">
+            <div>提交题目</div>
+        </a>
+        <div id="aboutBtn">关于</div>
+    </nav>
+    <div id="about">
+        <div>
+            <h1>关于</h1>
+            <p>
+                <h3>Q: 为什么做这个小站</h3>
+                <h3>A: 根据个人经验，把面试遇到的各种题目以实际操作的形式整理出，一方面是为了提高巩固，练习代码；另一方面希望这些内容对有需要的朋友有帮助。</h3>
+            </p>
+            <p>
+                <h3>Q: 项目地址</h3>
+                <h3>A: <a href="http://github.com/html50/interview">Github.com/html50/interview</a></h3>
+            </p>
+            <p>
+                <h3>Q: 题目解析在哪？</h3>
+                <h3>A: 每道题的答案基本都在网页源码内，比如JS题目一般都可以控制台调试(console)，CSS题目的效果在style内。</h3>
+            </p>
+        </div>
+    </div>
+   <iframe id="iframe" src="./list.html"></iframe>
+    <script>
+    var isAboutOpen = 0;
 
-<h1 id="siteName" class="top title">Interview QA</h1>
-  <search id="searchBtn" class="top search">
-  <svg t="1509542561172" class="icon" style="" viewBox="0 0 1026 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2670" xmlns:xlink="http://www.w3.org/1999/xlink" width="200.390625" height="200"><defs><style type="text/css"></style></defs><path d="M1019.2 979.2l-256-256c153.6-172.8 147.2-435.2-19.2-595.2-83.2-83.2-198.4-128-307.2-128S212.8 44.8 129.6 128c-172.8 172.8-172.8 448 0 614.4 83.2 83.2 198.4 128 307.2 128 102.4 0 204.8-38.4 288-108.8l256 256c6.4 6.4 12.8 6.4 19.2 6.4s12.8 0 19.2-6.4C1025.6 1004.8 1025.6 992 1019.2 979.2zM168 704C91.2 633.6 52.8 537.6 52.8 435.2s38.4-198.4 115.2-268.8c70.4-70.4 166.4-115.2 268.8-115.2S635.2 89.6 705.6 166.4c147.2 147.2 147.2 390.4 0 544-70.4 70.4-166.4 115.2-268.8 115.2S238.4 780.8 168 704z" p-id="2671" fill="#d81e06"></path></svg>
-  <input id="searchInput" type="text">
-  </search>
-  <menu id="menuBtn" class="top menu">
-  <svg t="1509542354486" class="icon" style="" viewBox="0 0 1170 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1856" xmlns:xlink="http://www.w3.org/1999/xlink" width="228.515625" height="200"><defs><style type="text/css"></style></defs><path d="M73.142857 877.714286h1024a73.142857 73.142857 0 0 1 0 146.285714h-1024a73.142857 73.142857 0 0 1 0-146.285714zM73.142857 438.857143h1024a73.142857 73.142857 0 0 1 0 146.285714h-1024a73.142857 73.142857 0 0 1 0-146.285714zM73.142857 0h1024a73.142857 73.142857 0 0 1 0 146.285714h-1024a73.142857 73.142857 0 0 1 0-146.285714z" p-id="1857" fill="#d81e06"></path></svg>
-  </menu>
+    if (location.search && location.search !== '?list') {
+        iframe.src = './article/' + location.search.slice(1) + '.html';
+    } 
 
+    siteName.addEventListener('click', function() {
+        iframe.src = '/interview/list.html';
+    })
 
-  <iframe id="iframe" src="./list.html"></iframe>
-  <script>
-  if(location.search && location.search !== '?list')
-  iframe.src = './article/'+location.search.slice(1)+'.html';
-
-
-  siteName.addEventListener('click', function() {
-      iframe.src = '/interview/list.html';
+    aboutBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (isAboutOpen) {
+            closeAbout();
+        } else {
+            isAboutOpen = 1;
+            iframe.classList.add('iframe-move-for-about')
+            about.classList.add('aboutOpen')
+        }
     })
 
 
-  menuBtn.addEventListener('click', function() {
-    
-  })
 
+    menuBtn.addEventListener('click', function() {
+        if (getComputedStyle(nav).opacity == 0) {
+            header.classList.add('menuOpen')
+            nav.classList.add('menuOpen')
+            iframe.classList.add('iframe-move-for-nav')
+            setTimeout(function() {
+                document.body.addEventListener('click', function(e) {
+                    if (e.target.nodeName === 'BODY') {
+                        closeNav()
+                        document.body.removeEventListener('click', arguments.callee)
+                    }
+                })
+            }, 0)
+        } else {
+            closeNav()
+        }
 
-
-  searchBtn.addEventListener('click', function() {
-    
-  })
-
-
-  iframe.addEventListener('load', function() {
-      let title = iframe.contentWindow.document.title || 'untitle';
-      document.title = title;
-
-      if(iframe.src.indexOf('/list.html')===-1){
-        history.pushState(null,null,iframe.src.replace(/(.*\/)*([^.]+).*/ig,"?$2"));
-      }else{
-        history.pushState(null,null,location.origin+'/interview/');
-      }
-      
     })
 
-  </script>
+    searchBtn.addEventListener('click', function() {
+        if (parseInt(getComputedStyle(searchInput).width) === 0) {
+            searchInput.style.width = '200px'
+            searchInput.style.border = '1px solid #909090'
+            searchInput.focus();
+        } else {
+            searchInput.style.width = 0;
+            searchInput.style.border = 'none'
+        }
+    })
+
+
+    iframe.addEventListener('load', function() {
+        let title = iframe.contentWindow.document.title || 'untitle';
+        document.title = title;
+
+        if (iframe.src.indexOf('/list.html') === -1) {
+            history.pushState(null, null, iframe.src.replace(/(.*\/)*([^.]+).*/ig, "?$2"));
+        } else {
+            history.pushState(null, null, location.origin + '/interview/');
+        }
+
+    })
+
+
+
+    function closeNav() {
+        header.classList.remove('menuOpen')
+        nav.classList.remove('menuOpen')
+        iframe.classList.remove('iframe-move-for-nav')
+        if (isAboutOpen) {
+            closeAbout()
+        }
+    }
+
+    function closeAbout() {
+        isAboutOpen = 0;
+        iframe.classList.remove('iframe-move-for-about')
+        about.classList.remove('aboutOpen')
+    }
+    </script>
 </body>
 
 </html>

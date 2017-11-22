@@ -20,3 +20,16 @@ function throttle(fn,time){
     }
   }
 }
+
+var throttledFn = throttle(resizeWindow,3000)
+
+
+function resizeWindow(){
+  console.log('resize to: 200 * 300')
+}
+
+setInterval(function(){
+//(throttle(resizeWindow,3000))();
+throttledFn()
+console.log('interval running in 1s')
+},1000)

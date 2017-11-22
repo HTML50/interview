@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+
+<head>
+    <title>事件冒泡与事件捕获</title>
+    <link rel="stylesheet" href="../lib/github.css">
+    <style>
+    body {
+        font-size: 20px;
+    }
+
+    body h1 {
+        text-align: center;
+    }
+
+    .tip {
+        border: 1px solid rgb(220, 220, 220);
+        color: rgb(93, 93, 93);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .container {
+        width: 50vw;
+        height: 100%;
+        margin: auto;
+    }
+
+    .describe {
+        background: #f8f8f8;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        padding: 30px;
+        margin-bottom: 20px;
+    }
+
+    </style>
+</head>
+
+<body>
+    <h1>事件冒泡与事件捕获</h1>
+    <div class="container">
+        <div>
+            <p>有如下DOM结构与JS代码，请回答单击button会提示什么：</p>
+    
+     <pre><code data-language="html">
+    <body>
+    <div id="mid">
+        <button id="inner"></button>
+    </div>
+    </body>
+    </code></pre>
+
+
+    <pre><code data-language="javascript">
+    document.body.addEventListener('click',function(e){
+        console.log('body was clicked')
+        e.stopPropagation();
+      })
+
+      mid.addEventListener('click',function(e){
+        console.log('div was clicked')
+        e.stopPropagation();
+      },true)
+
+      inner.addEventListener('click',function(e){
+        console.log('button was clicked')
+         e.stopPropagation();
+      },true)
+    </code></pre>
+        </div>
+        <p>提示：</p>
+        <div class="tip">
+            暂无提示，这个不难。
+        </div>
+    </div>
+    <script src="../lib/rainbow-custom.min.js"></script>
+</body>
+</html>

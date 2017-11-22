@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+
+<head>
+    <title>函数去抖(debounce)，节流(throttle)</title>
+    <link rel="stylesheet" href="../lib/github.css">
+    <style>
+    body {
+        font-size: 20px;
+    }
+
+    body h1 {
+        text-align: center;
+    }
+
+    .tip {
+        border: 1px solid rgb(220, 220, 220);
+        color: rgb(93, 93, 93);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .container {
+        width: 50vw;
+        height: 100%;
+        margin: auto;
+    }
+
+    .describe {
+        background: #f8f8f8;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        padding: 30px;
+        margin-bottom: 20px;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>函数去抖(debounce)，节流(throttle)</h1>
+    <div class="container">
+        <div>
+            <p>实现如下函数：</p>
+            <pre><code data-language="javascript">
+    function debounce(fn,wait){
+        ...
+    }
+
+
+    function throttle(fn,time){
+        ...
+    }
+</code></pre>
+            <p>完成setInterval执行时，每3秒输出一次resizeWindow()内的内容：</p>
+            <pre><code data-language="javascript">
+    function resizeWindow(){
+        console.log('resize to: 200 * 300')
+    }
+
+    var throttledFn = throttle(resizeWindow,3000)
+
+    
+    setInterval(function(){
+        throttledFn()
+        console.log('interval running in 1s')
+    },1000)
+
+</code></pre>
+        </div>
+        <p>进阶：</p>
+        <div class="tip">
+            自己提出防抖的场景应用，完成并比较不同。
+        </div>
+    </div>
+    <script src="../lib/rainbow-custom.min.js"></script>
+    <script src="../lib/diy.js"></script>
+<script>
+diy(0,0,1)
+</script>
+</body>
+
+</html>
