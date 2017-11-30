@@ -38,7 +38,7 @@
 </head>
 
 <body>
-    <h1>函数去抖(debounce)，节流(throttle)</h1>
+    <h1>函数防抖(debounce)，节流(throttle)</h1>
     <div class="container">
         <div>
             <p>实现如下函数：</p>
@@ -51,32 +51,34 @@
     function throttle(fn,time){
         ...
     }
+
 </code></pre>
-            <p>完成setInterval执行时，每3秒输出一次resizeWindow()内的内容：</p>
-            <pre><code data-language="javascript">
-    function resizeWindow(){
-        console.log('resize to: 200 * 300')
+            <p>当改变窗口大小时，拖动停滞大于0.5秒才输出内容：</p>
+            <pre><code data-language="javascript" id="code">
+    function debounce(fn,wait){
+        ...
     }
 
-    var throttledFn = throttle(resizeWindow,3000)
+    var debounced = debounce(function(){
+      console.log('window resized')
+    },500)
 
-    
-    setInterval(function(){
-        throttledFn()
-        console.log('interval running in 1s')
-    },1000)
+    window.addEventListener('resize',function(){
+      debounced();
+    })
 
 </code></pre>
         </div>
         <p>进阶：</p>
         <div class="tip">
-            自己提出防抖的场景应用，完成并比较不同。
+            自己提出函数节流的场景应用，完成并比较不同。
         </div>
     </div>
     <script src="../lib/rainbow-custom.min.js"></script>
     <script src="../lib/diy.js"></script>
 <script>
-diy(0,0,1)
+var customizedCode = code.innerHTML
+diy(0,0,customizedCode)
 </script>
 </body>
 
